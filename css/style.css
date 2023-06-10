@@ -8,17 +8,17 @@
 }
 
 :root{
-    --cor1: #AA00FA;
-    --cor2: #023f68;
-    --cor3: #A89204;
-    --cor4: #F51911;
-    --cor5: #F56406;
+    --cor1: #DA2FF6;
+    --cor2: #BFD428;
+    --cor3: #8D28D4;
+    --cor4: #3028D4;
+    --cor5: #D4493D;
 }
 
 body{
     width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(var(--cor5),var(--cor3));
+    background-image: linear-gradient(to bottom, var(--cor1), var(--cor3), var(--cor4));
 }
 
 header{
@@ -26,7 +26,7 @@ header{
 }
 
 h1{
-    color: var(--cor1);
+    color: var(--cor2);
     text-align: center;
     font-family: sans-serif;
     font-size: 2.5em;
@@ -68,9 +68,9 @@ main{
 main > h1{
     text-align: center;
     font-size: 1.7em;
-    color: var(--cor4);
+    color: var(--cor5);
     border-radius: 15px 15px 0px 0px;
-    background-color: var(--cor1);
+    background-color: var(--cor4);
 }
 section{
     display: flex;
