@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Nome</title>
+    <style>
+        
+        body{
+            background-color: white;
+        }
+        input.usu{
+            display: none;
+        }
+
+        label, span{
+            display: inline-block;
+            padding: 5px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            
+        }
+
+        label:hover, span:hover{
+            cursor: pointer;
+        }
+
+        label:active,span:active{
+            background-color: #dddddd;
+        }
+
+        input[type="file"]{
+            display: none;
+        }
+
+        textarea{
+            resize: none;
+        }
+
+        img.imagepost, video{
+            display: block;            
+            width: 200px;
+            max-height: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nome: Exemplo</h1>
+    <h2>Idade: 28</h2>
+    <h2>Nascimento: 1995</h2>
+    <h2>Email: exemplo@email.com</h2>
+    <p>Não foi nada demais</p>
+    <p>Nova Publicação</p>
+    <p>
+        <video src="dados/usuarios/exemplo/videos/eusoumesmo.mp4" controls=""></video>
+    </p>
+    <p>primeira imagem</p>
+    <p><img class="imagepost" src="dados/usuarios/exemplo/imagens/back-phone.jpg" alt="post/image"></p>
+    <p>Esse é o meu primeiro post estou muito feliz com isso</p>
+</body>
+</html>

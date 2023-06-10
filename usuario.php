@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina do Usuario</title>
     <style>
+        ::-webkit-scrollbar{
+            width: 0px;
+        }
+
         body{
             background-color: white;
         }
