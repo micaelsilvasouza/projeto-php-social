@@ -1,0 +1,5 @@
+exemplo|exemplo.usu@email|Exemplo
+noventa.com|noven.ta@emal|Noventa e 7
+msantos|msantos@emal|micael dos santos
+nadaAlem|ndaAlem@emal|Nada Alem
+LuciMauru|lucimaru@emal|Luciano Mauricio

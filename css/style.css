@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+/*
+    #6856F0
+    #7D6EF0
+    #F09286
+    #015958
+    #023535
+*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+:root{
+    --cor1: #6856F0;
+    --cor2: #DC05FF;
+    --cor3: #F09286;
+    --cor4: #015958;
+    --cor5: #7D6EF0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom,var(--cor1), var(--cor5));
+}
+
+header{
+    display: flex;
+}
+
+h1{
+    color: var(--cor3);
+    font-family: sans-serif;
+    padding: 10px;
+}
+
+nav{
+    padding-right: 10px;
+    padding-top: 28px;
+    width: 55%;
+    text-align: right;
+}
+
+nav > a{
+    display: inline;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: sans-serif;
+    color: white;
+    margin-left: 5px;
+    padding: 7px;
+    border-radius: 10px;
+    text-align: right;
+}
+
+nav>a:active{
+    background-color: var(--cor5);
+}
