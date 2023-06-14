@@ -5,50 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina do Usuario</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pagina-usuario.css">
     <style>
-        ::-webkit-scrollbar{
-            width: 0px;
-        }
-
-        body{
-            background-color: white;
-        }
-        input.usu{
-            display: none;
-        }
-
-        label, span{
-            display: inline-block;
-            padding: 5px;
-            margin-left: 10px;
-            margin-bottom: 10px;
-            border: 2px solid black;
-            border-radius: 5px;
-            
-        }
-
-        label:hover, span:hover{
-            cursor: pointer;
-        }
-
-        label:active,span:active{
-            background-color: #dddddd;
-        }
-
-        input[type="file"]{
-            display: none;
-        }
-
-        textarea{
-            resize: none;
-        }
-
-        img.imagepost, video{
-            display: block;            
-            width: 200px;
-            max-height: 200px;
-            margin: 10px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
     </style>
 </head>
 <body>
@@ -66,51 +26,59 @@
         //var_dump($usuario);
         fclose($inform_usu);
     ?>
-    <h1>Nome: <?=$nome?></h1>
-    <h2>Idade: <?=$idade?> </h2>
-    <h2>Nascimento: <?=$nasc?></h2>
-    <h2>Email: <?=$email?></h2>
-    <form id="formalt" action="atualizar.php" method="post">
-        <input type="text" name="usu" class="usu" value="<?=$usu?>">
-        <input id="altcad" type="button" value="Atualizar Cadastro">
-        <input id="altsen" type="button" value="Alterar Senha">
-        <input id="proc" type="button" value="Procurar">
-    </form>
-    
-    <br>
-    <form id="form" action="load-post.php" method="post" enctype="multipart/form-data">
-        <input type="text" name="usu" class="usu" value="<?=$usu?>">
-        <label id="imagem" for="file">IMG</label>
-        <label id="video" for="file">VID</label>
-        <span id="remover">Remover Arquivo</span>
-        <input type="file" name="file" id="file">
+
+    <header>
+        <h1><?=$nome?></h1>
+        <div>
+            <span><?=$email?></span>
+            <span><?=$idade?> anos</span>
+        </div>
+    </header>
+
+    <main>
+        <form id="formalt" action="atualizar.php" method="post">
+            <input type="text" name="usu" class="usu" value="<?=$usu?>">
+            <input id="altcad" type="button" value="Atualizar Cadastro">
+            <input id="altsen" type="button" value="Alterar Senha">
+            <input id="proc" type="button" value="Procurar">
+        </form>
+        
         <br>
-        <textarea name="post" id="post" cols="50" rows="3" placeholder="Nova Publicação"></textarea>
+        <form id="form" action="load-post.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="usu" class="usu" value="<?=$usu?>">
+            <label id="imagem" for="file">IMG</label>
+            <label id="video" for="file">VID</label>
+            <span id="remover">Remover Arquivo</span>
+            <input type="file" name="file" id="file">
+            <br>
+            <textarea name="post" id="post" cols="50" rows="3" placeholder="Nova Publicação"></textarea>
+            <br>
+            <input id="enviar" type="button" value="Publicar">
+        </form>
+        <?php
+            $arq_posts = fopen("dados/usuarios/$usu/posts.txt","r");
+            $posts = transcreverArquivo($arq_posts);
+            feof($arq_posts);
+            foreach (array_reverse($posts) as $post) {
+                echo "<div><h1>$nome</h1>";
+                if(strlen($post[0]) > 0){
+                    echo "<p>$post[0]</p>";
+                }
+                if (count($post) > 2){
+                    if($post[2] == "imagem"){
+                        echo "<img class='imagepost' src='dados/usuarios/$usu/imagens/$post[1]' alt='post/image'>";
+                    }
+                    if($post[2] == "video"){
+                        echo "<video src='dados/usuarios/$usu/videos/$post[1]' controls></video>";
+                    }
+                }
+                echo "</div>";
+            }
+        
+        ?>
         <br>
-        <input id="enviar" type="button" value="Publicar">
-    </form>
-    <?php
-        $arq_posts = fopen("dados/usuarios/$usu/posts.txt","r");
-        $posts = transcreverArquivo($arq_posts);
-        feof($arq_posts);
-        foreach (array_reverse($posts) as $post) {
-            if(strlen($post[0]) > 0){
-                echo "<p>$post[0]<p>";
-            }
-            if (count($post) > 2){
-                if($post[2] == "imagem"){
-                    echo "<img class='imagepost' src='dados/usuarios/$usu/imagens/$post[1]' alt='post/image'>";
-                }
-                if($post[2] == "video"){
-                    echo "<video src='dados/usuarios/$usu/videos/$post[1]' controls></video>";
-                }
-            }
-            
-        }
-    
-    ?>
-    <br>
-    <a href="index.php">Voltar ao login</a>
+        <a href="index.php">Voltar ao login</a>
+    </main>
 
     <script>
         //objeto input button para submit do formalt Cadastro

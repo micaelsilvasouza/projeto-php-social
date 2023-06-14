@@ -5,46 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina de Nome</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pagina-usuario.css">
     <style>
-        body{
-            background-color: white;
-        }
-        input.usu{
-            display: none;
-        }
-
-        label, span{
-            display: inline-block;
-            padding: 5px;
-            margin-left: 10px;
-            margin-bottom: 10px;
-            border: 2px solid black;
-            border-radius: 5px;
-            
-        }
-
-        label:hover, span:hover{
-            cursor: pointer;
-        }
-
-        label:active,span:active{
-            background-color: #dddddd;
-        }
-
-        input[type="file"]{
-            display: none;
-        }
-
-        textarea{
-            resize: none;
-        }
-
-        img.imagepost, video{
-            display: block;            
-            width: 200px;
-            max-height: 200px;
-            margin: 10px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
     </style>
 </head>
 <body>
@@ -63,32 +27,38 @@
         //var_dump($usuario);
         fclose($inform_usu);
     ?>
-    <h1>Nome: <?=$nome?></h1>
-    <h2>Idade: <?=$idade?> </h2>
-    <h2>Nascimento: <?=$nasc?></h2>
-    <h2>Email: <?=$email?></h2>
-    <?php
-        $arq_posts = fopen("dados/usuarios/$proc/posts.txt","r");
-        $posts = transcreverArquivo($arq_posts);
-        fclose($arq_posts);
-        if(count($posts) > 0){
-            foreach (array_reverse($posts) as $post) {
-                if(strlen($post[0]) > 0){
-                    echo "<p>$post[0]<p>";
-                }
-                if (count($post) > 2){
-                    if($post[2] == "imagem"){
-                        echo "<img class='imagepost' src='dados/usuarios/$proc/imagens/$post[1]' alt='post/image'>";
+    <header>
+        <h1><?=$nome?></h1>
+        <div>
+            <span><?=$email?></span>
+            <span><?=$idade?> anos</span>
+        </div>
+    </header>
+    <main>
+        <?php
+            $arq_posts = fopen("dados/usuarios/$proc/posts.txt","r");
+            $posts = transcreverArquivo($arq_posts);
+            fclose($arq_posts);
+            if(count($posts) > 0){
+                foreach (array_reverse($posts) as $post) {
+                    echo"<div><h1>$nome</h1>";
+                    if(strlen($post[0]) > 0){
+                        echo "<p>$post[0]<p>";
                     }
-                    if($post[2] == "video"){
-                        echo "<video src='dados/usuarios/$proc/videos/$post[1]' controls></video>";
+                    if (count($post) > 2){
+                        if($post[2] == "imagem"){
+                            echo "<img class='imagepost' src='dados/usuarios/$proc/imagens/$post[1]' alt='post/image'>";
+                        }
+                        if($post[2] == "video"){
+                            echo "<video src='dados/usuarios/$proc/videos/$post[1]' controls></video>";
+                        }
                     }
+                    echo "</div>";
                 }
-                
+            }else{
+                echo "<div><h1>Não Há Nenhuma Publicação</h1></div>";
             }
-        }else{
-            echo "<p>Não Há Nenhuma Publicação</p>";
-        }
-    ?>
+        ?>
+    </main>
 </body>
 </html>

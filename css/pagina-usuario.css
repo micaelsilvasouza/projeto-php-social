@@ -62,7 +62,7 @@ main > div > p{
 
 main > div > video, main > div > img{
     display: block;
-    width: 400px;
+    width: 80%;
     max-width: 600px;
     margin: auto;
     margin-top: 10px;
