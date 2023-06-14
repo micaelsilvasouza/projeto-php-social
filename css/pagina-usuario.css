@@ -18,24 +18,26 @@ header > h1{
     text-align: right;
     font-size: 2.3em;
     color:var(--corFundo3);
+    max-width: 800px;
+    margin: auto;
 }
 
 header > div{
-    position: absolute;
-    transform: translateX(-100%);
+    max-width: 800px;
+    margin: auto;
     padding: 10px;
-    left: 100%;
+    text-align: right;
 }
 
 header >div > span{
     display: block;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: left;
 }
 
 main{
     width: 90%;
+    max-width: 800px;
     margin: auto;
 }
 
@@ -56,4 +58,12 @@ main > div > h1{
 
 main > div > p{
     margin: 5px;
+}
+
+main > div > video, main > div > img{
+    display: block;
+    width: 400px;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 10px;
 }
