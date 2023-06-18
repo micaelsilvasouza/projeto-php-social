@@ -1,0 +1,57 @@
+body{
+    padding: 10px;
+}
+
+input.usu, form > input[type="file"]{
+    display: none;
+}
+
+div{
+    margin: 3px;
+    text-align: right;
+}
+
+div > label{
+    display: inline-block;
+    font: 900 1em verdana;
+    background-color: var(--corFundo4);
+    color: var(--corFundo2);
+    max-width: 200px;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+div > label:hover{
+    background-color: var(--corFundo2);
+    color: var(--corFundo4);
+}
+
+div > label:active{
+    background-color: var(--corFundo1);
+}
+
+div > input#enviar{
+    font: bold 1em verdana;
+    background-color: var(--corFundo2);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+div > input#enviar:hover{
+    background-color: var(--corFundo4);
+    color: var(--corFundo2);
+}
+div > input#enviar:active{
+    color: var(--corFundo1);
+}
+
+div > textarea{
+    resize: none;
+    font: 1em verdana;
+    padding: 10px;
+    width: 100%;
+    border-radius: 20px;
+}

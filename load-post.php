@@ -69,7 +69,7 @@
         }
         
     ?>
-    <form id="form" action="usuario.php" method="post">
+    <form id="form" action="usuario.php" target="_parent" method="post">
         <input type="text" name="usu" id="usu" value="<?=$usuario?>">
         <input type="submit" value="Continuar">
     </form>

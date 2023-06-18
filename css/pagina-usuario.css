@@ -67,3 +67,8 @@ main > div > video, main > div > img{
     margin: auto;
     margin-top: 10px;
 }
+
+main > iframe{
+    width: 100%;
+    height: 50px;
+}
