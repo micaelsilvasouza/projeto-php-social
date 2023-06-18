@@ -43,7 +43,7 @@
             <input id="proc" type="button" value="Procurar">
         </form>
 
-        <iframe src="postar.php" frameborder="1" ></iframe>
+        <iframe src="postar.php" frameborder="0" height="130px"></iframe>
 
         <?php
             $arq_posts = fopen("dados/usuarios/$usu/posts.txt","r");
