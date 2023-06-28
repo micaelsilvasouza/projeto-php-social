@@ -12,15 +12,18 @@
             }
         }
 
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         div{
-            width: 100px;
-            height: 100px;
+            width: 20vw;
+            height: 20vw;
             border-bottom: 5px solid #00f0aa;
             border-radius: 50%;
             animation: rot 1s linear infinite;
-            position: absolute;
-            top: calc(50vh - 100px);
-            left: calc(50vw - 100px);
         }
         form{
             display: none;

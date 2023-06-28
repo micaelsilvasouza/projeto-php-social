@@ -22,7 +22,6 @@
         <div>
             <textarea name="post" id="post" cols="50" rows="3" placeholder="Nova Publicação"></textarea>
         </div>
-        
     </form>
 
     <script src="js/postagem.js"></script>
