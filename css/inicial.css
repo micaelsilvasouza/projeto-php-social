@@ -7,7 +7,7 @@ main{
 
 header{
     display: flex;
-    background: linear-gradient(to top,var(--corFundo1), var(--corFundo2));
+    background: linear-gradient(to left,var(--corFundo1), var(--corFundo2));
     color: white;
     text-align: center;
     width: 100vw;
@@ -44,14 +44,13 @@ section{
 }
 
 footer{
-    background: linear-gradient(to bottom,var(--corFundo1), var(--corFundo2));
+    background: linear-gradient(to left,var(--corFundo1), var(--corFundo2));
     width: 100vw;
     padding: 20px;
     text-align: center;
     border-top: 1px solid #868686;
     position: fixed;
-    transform: translateY(-100%);
-    top: 100vh;
+    bottom: 0px;
 }
 
 nav > a{

@@ -69,9 +69,9 @@
                 }
             }
         ?>
-        <form id="form" action="<?=htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" enctype="multipart/form-data">
+        <form id="form" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data" autocomplete="on">
             <div>
-                <input type="text" name="usu" id="usu" value="<?=$usuario?>" required placeholder="Usuario">
+                <input type="text" name="usu" id="usu" value="<?=$usuario?>"required placeholder="Usuario" autocomplete="username">
             </div>
             <div>
                 <input type="password" name="sen" id="sen" value="<?=$senha?>" required placeholder="Senha">
@@ -98,7 +98,6 @@
         if(men){
             setTimeout(()=>{men.style.display = "none"},2000)
         }
-        
     </script>
 </body>
 </html>
