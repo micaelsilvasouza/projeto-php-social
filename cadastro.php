@@ -5,11 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Usuario</title>
-    <style>
-        body{
-            background-color: antiquewhite;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cadastro-login.css">
 </head>
 <body>
     <?php
@@ -30,39 +27,36 @@
         $check = false;
     ?>
 
-    <h1>Cadastro Usuario</h1>
-    <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-        <div>
-            <label for="nome">Nome: </label>
-            <input type="text" name="nome" id="nome" placeholder="Nome Sobrenome" value="<?=$nome
-            ?>" required>
-        </div>
-        <div>
-            <label for="nasc">Ano de Nascimento</label>
-            <input type="number" name="nasc" id="nasc" placeholder="2000" value="<?=$nasc?>" required>
-        </div>
-        <div>
-            <label for="usu">Nome de Usuario: </label>
-            <input type="text" name="usu" id="usu" value="<?=$usuario?>" placeholder="Usuario_exe" required>
-            <span class="men"></span>
-        </div>
+    <main>
+        <h1>Cadastro Usuario</h1>
+        <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+            <div>
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Nome Sobrenome" value="<?=$nome
+                ?>" required>
+            </div>
+            <div>
+                <label for="nasc">Ano de Nascimento</label>
+                <input type="date" name="nasc" id="nasc" placeholder="2000" value="<?=$nasc?>" required>
+            </div>
+            <div>
+                <label for="usu">Nome de Usuario</label>
+                <input type="text" name="usu" id="usu" value="<?=$usuario?>" placeholder="Usuario_exe" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email"  value="<?=$email?>" placeholder="exemplo.usu@email" required>
+            </div>
+            <div>
+                <label for="sen">Senha</label>
+                <input type="password" name="sen" id="sen" minlength="8" maxlength="15" required placeholder="exe$45@96">
+            </div>
         
-        <div>   
-            <label for="email">Email: </label>
-            <input type="email" name="email" id="email"  value="<?=$email?>" placeholder="exemplo.usu@email" required>
-            <span class="men"></span>
-        </div>
-        
-        <div>
-            <label for="sen">Senha: </label>
-            <input type="password" name="sen" id="sen" minlength="8" maxlength="15" required>
-            <span class="men"></span>
-        </div>
-       
-        <div>
-            <input type="submit" value="Cadastrar">
-        </div>
-    </form>
+            
+            <div><input type="submit" value="Cadastrar"></div>
+            
+        </form>
+    </main>
     <?php 
         if($usuario != "" and $email != "" and $senha != ""){
             for($u = 0; $u < count($usuarios); $u += 1){
@@ -89,7 +83,6 @@
         }
         fclose($arquivo_usu)
     ?>
-    <br>
-    <a href="index.php">Voltar ao Login</a>
+    <a href="login.php">Voltar ao Login</a>
 </body>
 </html>

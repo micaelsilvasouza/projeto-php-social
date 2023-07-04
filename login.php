@@ -6,7 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/cadastro-login.css">
+
+    <style>
+        a{
+            position: absolute;
+            right: 5px;
+        }
+        @media screen and (max-width: 700) {
+            main > h1{
+                padding-top: 95px;
+                padding-bottom: 96px;
+            }
+        }
+    </style>
 </head>
 <body>
     <?php 
@@ -21,12 +34,7 @@
         $senha = $_POST["sen"]??"";
     ?>
     
-    
-
-    <main>
-        <h1>Login</h1>
-
-        <?php 
+    <?php 
             //var_dump($usuarios);
             $check = false;
             //Verificar se foi enviado nome de usuario
@@ -42,9 +50,9 @@
                 if(!$check){
                     //Informando que o usuario não existe
                     echo "
-                        <p class='men'>
+                        <span class='men'>
                             Usuario $usuario não foi cadastrado.
-                        </p>
+                        </span>
                     ";
                 }
             }
@@ -69,14 +77,21 @@
                 }
             }
         ?>
+
+    <main>
+        <h1>Login</h1>
+
+        
         <form id="form" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data" autocomplete="on">
             <div>
-                <input type="text" name="usu" id="usu" value="<?=$usuario?>"required placeholder="Usuario" autocomplete="username">
+                <label for="usu">Usuario</label>
+                <input type="text" name="usu" id="usu" value="<?=$usuario?>"required placeholder="Usuario_exe" autocomplete="username">
             </div>
             <div>
-                <input type="password" name="sen" id="sen" value="<?=$senha?>" required placeholder="Senha">
+                <label for="sen">Senha</label>
+                <input type="password" name="sen" id="sen" value="<?=$senha?>" required placeholder="exe$45@96">
             </div>
-            <input type="submit" value="Entrar">
+            <div><input type="submit" value="Entrar"></div>
         </form>
         
         

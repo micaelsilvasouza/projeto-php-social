@@ -1,0 +1,153 @@
+body{
+    background-image: linear-gradient(45deg,var(--corFundo1), var(--corFundo2));
+    position: relative;
+}
+
+main{
+    background-color: white;
+    position: absolute;
+    width: 90vw;
+    max-width: 400px;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 30px;
+    box-shadow: 5px 5px 9px #00000076;
+}
+
+main > h1{
+    background-color: var(--corFundo1);
+    color: white;
+    font-size: 2.6em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+main > form{
+    padding: 10px;
+}
+
+main > form > div{
+    background-color: var(--corFundo2);
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+main > form > div:first-child{
+    border-radius: 20px 20px 5px 5px;
+}
+
+main > form > div:last-child{
+    border-radius: 5px 5px 20px 20px;
+}
+
+main > form  div > label{
+    display: block;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    padding-bottom: 5px;
+}
+
+main > form > div > input{
+    display: block;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 6px;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+main > form  input[type="submit"]{
+    background-color: var(--corFundo1);
+    color:white;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+}
+
+main > form  input[type="submit"]:hover{
+    background-color: var(--corFundo3);
+}
+
+main > form  input[type="submit"]:active{
+    background-color: var(--corFundo4);
+}
+
+.men{
+    display: block;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    background-color: red;
+    color: white;
+    width: 300px;
+    padding: 5px;
+    position: absolute;
+    top: 55px;
+    left: 30px;
+}
+
+
+a{
+    display: inline-block;
+    background-color: var(--corFundo1);
+    color: white;
+    font-size: 3vw;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    padding: 5px 8px;
+    margin: 5px 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 2;
+}
+
+a:hover{
+    background-color: var(--corFundo3);
+}
+
+a:active{
+    background-color: var(--corFundo2);
+}
+
+@media screen and (min-width: 700px) {
+    main{
+        max-width: 1000px;
+    }
+    main > h1{
+        float: left;
+        width: 50%;
+        height: 100%;
+        border-radius: 30px 0px 0px 30px;
+        padding-top: 214px;
+        padding-bottom: 213px;
+        margin: 0px;
+    }
+
+    main > form{
+        float: left;
+        width: 50%;
+    }
+
+    a{
+        font-size: 1.3em;
+    }
+}
