@@ -5,27 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Senha</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cadastro-login.css">
     <style>
-        body{
-            background-color: white;
-        }
-        p.men{
-            background-color: red;
-            color: white;
-            text-align: center;
-            width: 250px;
-            padding: 10px;
-        }
-
-        input#usu{
-            display: none;
+        @media screen and (min-width: 700px){
+            main > h1{
+               padding-top: 134px; 
+               padding-bottom: 135px; 
+            }
+            
         }
     </style>
 </head>
 <body onload="removerMensagem()">
     <?php 
         require_once "arquivos.php";
-        $usuario = $_POST["usu"]??"Luciano";
+        $usuario = $_COOKIE["usuario"]??"exemplo";
         $atual = $_POST["atual"]??"";
         $nova = $_POST["nova"]??"";
 
@@ -34,58 +29,54 @@
         $dados = transcreverArquivo($arquivo_usu, true);
         fclose($arquivo_usu);
     ?>
-    <h1>Alterar Senha</h1>
-    <form id="form" action="<?=htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
-        <input type="text" name="usu" id="usu" value="<?=$usuario?>">
-        <div>
-            <label for="atual">Senha atual</label>
-            <input type="password" name="atual" id="atual" required minlength="8" maxlength="15">
-        </div>
-
-        <div>
-            <label for="nova">Nova senha</label>
-            <input type="password" name="nova" id="nova" required minlength="8" maxlength="15">
-        </div>
-
-        <div>
-            <label for="conf">Confirmar senha</label>
-            <input type="password" id="conf" required minlength="8" maxlength="15">
-        </div>
-
-        <div>
-            <input id="enviar" type="button" value="Alterar Senha">
-        </div>
-    </form>
-    
-    <?php 
-        //Verificando se a senha conferem
-        $check = false;
-        if($atual."\n" == $dados[3]){
-            //Alterando o valor da senha e escrevendo 
-            $arquivo_usu = fopen("dados/usuarios/$usuario/informacao.txt", "w");
-            $dados[3] = $nova;
-            foreach($dados as $dado){
-                escreverArquivo($arquivo_usu, $dado);
+    <main>
+        <h1>Alterar Senha</h1>
+        <form id="form" action="<?=htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
+            <div>
+                <label for="atual">Senha atual</label>
+                <input type="password" name="atual" id="atual" required minlength="8" maxlength="15">
+            </div>
+            <div>
+                <label for="nova">Nova senha</label>
+                <input type="password" name="nova" id="nova" required minlength="8" maxlength="15">
+            </div>
+            <div>
+                <label for="conf">Confirmar senha</label>
+                <input type="password" id="conf" required minlength="8" maxlength="15">
+            </div>
+            <div>
+                <input id="enviar" type="submit" value="Alterar Senha">
+            </div>
+        </form>
+        
+        <?php
+            //Verificando se a senha conferem
+            $check = false;
+            if($atual."\n" == $dados[3]){
+                //Alterando o valor da senha e escrevendo
+                $arquivo_usu = fopen("dados/usuarios/$usuario/informacao.txt", "w");
+                $dados[3] = $nova;
+                foreach($dados as $dado){
+                    escreverArquivo($arquivo_usu, $dado);
+                }
+                fclose($arquivo_usu);
+                $check = true;
+                echo "
+                    <p class='men' style='background-color: green'>
+                        Senha alterada com sucesso
+                    </p>
+                ";
+            }elseif($atual != ""){
+                echo "
+                    <p class='men'>
+                        A senha digitada não confere com a atual
+                    </p>
+                ";
             }
-            fclose($arquivo_usu);
-            $check = true;
-            echo "
-                <p class='men' style='background-color: green'>
-                    Senha alterada com sucesso
-                </p>
-            ";
-        }elseif($atual != ""){
-            echo "
-                <p class='men'>
-                    A senha digitada não confere com a atual
-                </p>
-            ";
-        }
-    ?>
-
-    <form id="formusu" action="usuario.php" method="post">
-        <input type="text" name="usu" id="usu" value="<?=$usuario?>">
-    </form>
+        ?>
+        
+    </main>
+    <a href="usuario.php">Valtar</a>
     <?php //var_dump($dados)?>
     <script>
         let check = "<?=$check?>"
@@ -95,8 +86,7 @@
 
         if(check){
             setTimeout(()=>{
-                form = document.getElementById("formusu")
-                form.submit()
+                window.location = "usuario.php"
             },500)
         }
 

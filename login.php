@@ -7,21 +7,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cadastro-login.css">
-
-    <style>
-        a{
-            position: absolute;
-            right: 5px;
-        }
-        @media screen and (max-width: 700) {
-            main > h1{
-                padding-top: 95px;
-                padding-bottom: 96px;
-            }
-        }
-    </style>
-</head>
-<body>
+    
     <?php 
         //Importações
         require_once "arquivos.php";   
@@ -32,54 +18,63 @@
         fclose($arquvio_usu);
         $usuario = $_POST["usu"]??"";
         $senha = $_POST["sen"]??"";
+        $cadastrado = isset($_COOKIE["usuario"])?true:false
     ?>
     
     <?php 
-            //var_dump($usuarios);
-            $check = false;
-            //Verificar se foi enviado nome de usuario
-            if(strlen($usuario) > 0 ){
-                //Verificando se o usuario existe
-                foreach ($usuarios as $usu){
-                    if($usu[0] == $usuario || $usu[1]==$usuario){
-                        $usuario = $usu[0];
-                        $check = true;
-                        break;
-                    }
-                }
-                if(!$check){
-                    //Informando que o usuario não existe
-                    echo "
-                        <span class='men'>
-                            Usuario $usuario não foi cadastrado.
-                        </span>
-                    ";
-                }
-            }
+        //var_dump($usuarios);
+        $check = false;
+        //Verificar se foi enviado nome de usuario
+        if(strlen($usuario) > 0 && !$cadastrado){
             //Verificando se o usuario existe
-            if($check){
-                //Acessando as infomações cadastradss
-                $arquvio_usu = fopen("dados/usuarios/$usuario/informacao.txt","r");
-                $info = transcreverArquivo($arquvio_usu, true);
-                //var_dump($info[3]);
-                //var_dump($senha);
-                fclose($arquvio_usu);
-                //Verificando se a senha esta correta
-                if($senha."\n" == $info[3]){
+            foreach ($usuarios as $usu){
+                if($usu[0] == $usuario || $usu[1]==$usuario){
+                    $usuario = $usu[0];
                     $check = true;
-                }else{
-                    $check = false;
-                    echo "
-                    <p class='men'>
-                        Senha incorreta.
-                    </p>
-                    ";
+                    break;
                 }
             }
-        ?>
+            if(!$check){
+                //Informando que o usuario não existe
+                echo "
+                    <span class='men'>
+                        Usuario $usuario não foi cadastrado.
+                    </span>
+                ";
+            }
+        }
+        //Verificando se o usuario existe
+        if($check){
+            //Acessando as infomações cadastradss
+            $arquvio_usu = fopen("dados/usuarios/$usuario/informacao.txt","r");
+            $info = transcreverArquivo($arquvio_usu, true);
+            //var_dump($info[3]);
+            //var_dump($senha);
+            fclose($arquvio_usu);
+            //Verificando se a senha esta correta
+            if($senha."\n" == $info[3]){
+                $check = true;
+                setcookie("usuario",$usuario,time()+ 86400, "/");
+            }else{
+                $check = false;
+                echo "
+                <p class='men'>
+                    Senha incorreta.
+                </p>
+                ";
+            }
+        }
+
+        if($cadastrado){
+            $check = true;
+        }
+    ?>
+</head>
+<body>
+    
 
     <main>
-        <h1>Login</h1>
+        <h1 id="titulo-login">Login</h1>
 
         
         <form id="form" action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" enctype="multipart/form-data" autocomplete="on">
@@ -105,10 +100,7 @@
         let usu = document.getElementById("usu")
         //console.log(check)
         if(check){
-            console.log("enviar")
-            form.setAttribute("action", "usuario.php")
-            usu.value = usuario
-            form.submit()
+            window.location = "usuario.php"
         }
         if(men){
             setTimeout(()=>{men.style.display = "none"},2000)

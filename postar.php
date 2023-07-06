@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php 
-        $usuario = "exemplo";
+        $usuario = $_COOKIE["usuario"]??"exemplo";
     ?>
     <form id="form" action="load-post.php" method="post" enctype="multipart/form-data">
         <input type="text" name="usu" class="usu" value="<?=$usuario?>">

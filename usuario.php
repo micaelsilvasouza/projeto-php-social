@@ -15,7 +15,7 @@
     <?php
         //Importações
         require_once "arquivos.php";
-        $usu = $_POST["usu"]??"exemplo";
+        $usu = $_COOKIE["usuario"]??"exemplo";
         $inform_usu = fopen("dados/usuarios/".$usu."/informacao.txt","r");
         $usuario = transcreverArquivo($inform_usu,true);
 
@@ -33,18 +33,14 @@
             <span><?=$email?></span>
             <span><?=$idade?> anos</span>
         </div>
+        <nav>
+            <a href="atualizar.php">Atualizar dados</a>
+            <a href="senha.php">Atualizar senha</a>
+        </nav>
     </header>
 
     <main>
-        <form id="formalt" action="atualizar.php" method="post">
-            <input type="text" name="usu" class="usu" value="<?=$usu?>">
-            <input id="altcad" type="button" value="Atualizar Cadastro">
-            <input id="altsen" type="button" value="Alterar Senha">
-            <input id="proc" type="button" value="Procurar">
-        </form>
-
-        <iframe src="postar.php" frameborder="0" height="130px"></iframe>
-
+        <iframe src="postar.php" frameborder="0"></iframe>
         <?php
             $arq_posts = fopen("dados/usuarios/$usu/posts.txt","r");
             $posts = transcreverArquivo($arq_posts);

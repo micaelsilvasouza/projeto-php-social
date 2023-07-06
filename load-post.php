@@ -19,8 +19,8 @@
         }
 
         div{
-            width: 20vw;
-            height: 20vw;
+            width: 10vw;
+            height: 10vw;
             border-bottom: 5px solid #00f0aa;
             border-radius: 50%;
             animation: rot 1s linear infinite;
@@ -79,8 +79,7 @@
     <div></div>
 
     <script>
-        let form = document.getElementById("form")
-        setTimeout(()=>{form.submit()}, 2000)
+        setTimeout(()=>{window.location = "usuario.php"}, 2000)
     </script>
 </body>
 </html>

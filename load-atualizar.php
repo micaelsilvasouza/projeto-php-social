@@ -34,7 +34,7 @@
 <body>
     <?php
     require_once "arquivos.php"; 
-    $usuario = $_POST["usu"] ?? 'exemplo';
+    $usuario = $_COOKIE["usuario"] ?? 'exemplo';
     $arq_usuario = fopen("dados/usuarios/$usuario/informacao.txt", "r");
     $dados_atuais = transcreverArquivo($arq_usuario, true);
     $dados_novos = [
