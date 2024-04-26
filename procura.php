@@ -4,17 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Procurar</title>
-    <style>
-        body{
-            background-color: white;
-        }
-        input.usu, datalist{
-            display: none;
-        }
-        button.btproc{
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="procura.css">
 </head>
 <body>
     <?php 
